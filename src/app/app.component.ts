@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewChildren, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, ViewChildren, OnInit, AfterViewInit, ElementRef, QueryList } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 
 @Component({
@@ -12,8 +12,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('sidenav') sidenav: ElementRef;
   @ViewChild('slider') slider: ElementRef;
   @ViewChild('autocomplete') autocomplete: ElementRef;
-  @ViewChildren('materialboxed') materialboxed;
-  @ViewChildren('scrollspy') scrollspy;
+  @ViewChildren('materialboxed') materialboxed: QueryList<ElementRef>;
+  @ViewChildren('scrollspy') scrollspy: QueryList<ElementRef>;
 
   constructor(private meta: Meta) { }
 
@@ -60,11 +60,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     M.Autocomplete.init(this.autocomplete.nativeElement, autocompleteOptions);
 
     // Material Box
-    const imgArray = this.materialboxed._results;
+    const imgArray = this.materialboxed.toArray();
     imgArray.forEach((image) => M.Materialbox.init(image.nativeElement));
 
     // Scrollspy
-    const spyArray = this.scrollspy._results;
+    const spyArray = this.scrollspy.toArray();
     spyArray.forEach((spy) => M.ScrollSpy.init(spy.nativeElement));
 
   }
