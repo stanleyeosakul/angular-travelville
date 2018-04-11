@@ -52,7 +52,7 @@ With the new update of Materialize CSS, javascript-based components no longer de
 1. Materialize CSS is now integrated into Angular!
 
 ## Example on initializing Sidenav
-In order to initialize javascript-based components in Angular, we will use **template reference variables** instead of the `querySelector` paradigm used in vanilla javascript.  Once these HTML elements are referenced, they can then be intialized in the `component.ts` file.
+In order to initialize javascript-based components in Angular, we will use **template reference variables** instead of the `querySelector` method used on the `document` object in vanilla javascript.  Once these HTML elements are referenced, they can then be intialized in the `component.ts` file.
 
 1. Reference the `ul` element in `app.component.html` by using `#sidenav`
 
@@ -114,13 +114,13 @@ In this project, Material Box is used 12 times, one for each image that is displ
     export class AppComponent implements AfterViewInit {
 
       // Access materialboxed elements
-      @ViewChildren('materialboxed') materialboxed;
+      @ViewChildren('materialboxed') materialboxed: QueryList<ElementRef>;
 
       constructor() { }
 
       // Initialize Material Box
       ngAfterViewInit() {
-        const imgArray = this.materialboxed._results;
+        const imgArray = this.materialboxed.toArray();
         imgArray.forEach((image) => M.Materialbox.init(image.nativeElement));
       }
 
