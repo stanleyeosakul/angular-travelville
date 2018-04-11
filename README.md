@@ -23,6 +23,7 @@ With the new update of Materialize CSS, javascript-based components no longer de
 ## Setup Materialize CSS
 1. Run `yarn add materialize-css@next`
 1. Add Materialize CSS into `.angular-cli.json`
+
     ```json
         // .angular-cli.json
         {
@@ -41,16 +42,20 @@ With the new update of Materialize CSS, javascript-based components no longer de
           ]
         }
     ```
+
 1. Declare the `M` variable in `./src/typings.d.ts`
+
     ```typescript
     declare var M;
     ```
+
 1. Materialize CSS is now integrated into Angular!
 
 ## Example on initializing Sidenav
 In order to initialize javascript-based components in Angular, we will use **template reference variables** instead of the `querySelector` paradigm used in vanilla javascript.  Once these HTML elements are referenced, they can then be intialized in the `component.ts` file.
 
 1. Reference the `ul` element in `app.component.html` by using `#sidenav`
+
     ```html
       <ul class="sidenav" id="mobile-nav" #sidenav>
         <li><a href="#home">Home</a></li>
@@ -61,7 +66,8 @@ In order to initialize javascript-based components in Angular, we will use **tem
       </ul>
     ```
 
-1. Access the HTML element using the `@ViewChild` decorator in `app.component.ts` and initialize it using the `ngAfterViewInit` lifecycle hook
+1. Access the HTML element using the `@ViewChild` decorator in `app.component.ts` and initialize it using the `ngAfterViewInit` lifecycle hook.
+
     ```typescript
     import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 
