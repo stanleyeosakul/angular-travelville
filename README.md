@@ -128,7 +128,7 @@ In this project, Material Box is used 12 times, one for each image that is displ
     ```
 
 # Injecting Meta Tags for SEO compatability
-As this is a travel website, we need to optimize it's availability on search engines and social media.  Unfortunately, we cannot use **Angular Universal** for server side rendering as the the components themselves still depend on javascript, which must be rendered in the browser.  However, we still can inject meta tags into the website for SEO and social media compatibility!
+As this is a travel website, we need to optimize it's availability on search engines and social media.  Unfortunately, we cannot use **Angular Universal** for server side rendering as the the components themselves still depend heavily on DOM manipulation, which must be rendered in the browser.  However, we still can inject meta tags into the website for SEO and social media compatibility!
 
 1. Provide the `Meta` class in `app.module.ts`
     ```typescript
