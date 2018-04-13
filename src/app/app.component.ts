@@ -1,5 +1,5 @@
 import { Component, ViewChild, ViewChildren, OnInit, AfterViewInit, ElementRef, QueryList } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChildren('materialboxed') materialboxed: QueryList<ElementRef>;
   @ViewChildren('scrollspy') scrollspy: QueryList<ElementRef>;
 
-  constructor(private meta: Meta) { }
+  constructor(private title: Title, private meta: Meta) { }
 
   ngOnInit() {
+    // Set title
+    this.title.setTitle('ngTravelville');
+
     // Set standard meta tags
     this.meta.addTags([
       { name: 'description', content: 'Single-page website built using Angular and Materialize CSS 1.0.0-beta (no jQuery!)' },
